@@ -4,6 +4,31 @@
 	layout:decorate="~{layout/base_layout}">
 	
 	<main layout:fragment="main">
-		<h1>새 포스트 작성 페이지</h1>
+		<div class="my-2 card">
+			<div class="card-header text-center">
+				<h1>새 포스트 작성 페이지</h1>
+			</div>
+			<div class="card-body">
+				<form method="post">
+					<div class="my-2">
+						<label for="title" class="form-label">제목</label>
+						<input id="title" name="title" type="text" required autofocus
+								class="form-control"/>
+					</div>
+					<div class="my-2">
+						<label for="content" class="form-label">내용</label>
+						<textarea id="content" name="content" class="form-control" required></textarea>
+					</div>
+					<div class="my-2">
+                        <label class="form-label" for="author">작성자</label>
+                        <input class="form-control" id="author"
+                            type="text" name="author" required />
+                    </div>
+					<div class="my-2">
+						<input type="submit" class="btn btn-outline-primary form-control" value="작성완료"/>
+					</div>
+				</form>
+			</div>
+		</div>
 	</main>
 </html>
