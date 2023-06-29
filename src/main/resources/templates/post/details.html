@@ -56,9 +56,25 @@
         		<span id="replyCount" th:text="${replyCount}">(댓글 개수)</span>개        		
         		<button id="btnToggleReply" class="btn btn-outline-dark">보이기</button>
         	</div>
-        	<div class="card-body">
+        	<div class="card-body collapse" id="replyToggleDiv">
+        		<div class="my-2 row">
+        			<div class="col-10">
+        				<textarea class="form-control" id="replyText" placeholder="댓글 내용 입력"></textarea>
+        			</div>
+        			<div class="col-2">
+        				<button id="btnReplyCreate" class="form-control btn btn-outline-success">등록</button>
+        			</div>
+        		</div>
+        		
+        		<!-- 댓글 목록을 보여줄 영역 -->
+        		<div class="my-2 row" id="replies"></div>
         	</div>
         </div>
     </main>
+    
+    <th:block layout:fragment="myscripts">
+    	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    	<script src="/js/reply/reply.js"></script>
+    </th:block>
     
 </html>
