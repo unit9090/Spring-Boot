@@ -60,15 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
-		const replyText = document.querySelector(`textarea#replyText_${replyId}`).value;
-		const data = {replyId, replyText};
+		const replyText = document.querySelector(textAreaId).value;
+		if(replyText === '') {
+			alert('수정할 댓글 내용을 입력하세요.');
+			return;
+		}
+		const data = {replyId, replyText};	// 요청 데이터(수정할 댓글 내용)
 		console.log(data);
 		
-								
-		// Ajax DELETE 방식 요청 주소
+		// Ajax PUT 방식 요청 주소
 		const reqUrl = '/api/reply';
 		
-		axios.put(reqUrl, data)					// Ajax DELETE 요청을 보냄
+		axios.put(reqUrl, data)					// Ajax UPDATE 요청을 보냄
 		.then((res) => {						// 성공 응답일 때 실행할 콜백 등록
 			console.log(res);
 			

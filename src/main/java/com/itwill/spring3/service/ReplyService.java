@@ -84,8 +84,11 @@ public class ReplyService {
 	@Transactional
 	public void update(ReplyUpdateDto dto) {
 		log.info("update(dto = {})", dto);
-		
+
+		// 1. 댓글 아이디로 DB에서 엔터티를 검색(select)
 		Reply entity = replyRepository.findById(dto.getReplyId()).orElseThrow();
+		
+		// 2. 검색한 엔터티의 프로퍼티를 수정:
 		entity.update(dto);
 		
 	}
