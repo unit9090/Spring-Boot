@@ -2,20 +2,15 @@ package com.itwill.spring3.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+// 각각의 메소드에서 시큐리티를 적용시키겠다.
 @EnableMethodSecurity
 // Web Security를 실행시키겠다.
 @EnableWebSecurity
@@ -35,6 +30,8 @@ public class SecurityConfig {
 	
 	// 로그인할 때 사용할 임시 사용자(메모리에 임시 저장되는 사용자) 생성 => 지울거임.
 	// 그냥 구조를 알라고 하는 거임.
+	/*
+	 * UserDetailsService를 DB에 있는 유저 정보로 리턴해주기 위해서 임시 아이디는 삭제
 	@Bean
 	public UserDetailsService inMemoryUserDetailsService() {
 		// 사용자 상세 정보
@@ -48,7 +45,7 @@ public class SecurityConfig {
 		UserDetails user2 = User
 								.withUsername("user2")							// 로그인할 때 사용할 사용자 이름
 								.password(passwordEncoder().encode("2222"))		// 로그인할 때 사용할 사용자 비밀번호
-								.roles("USER, ADMIN")							// 사용자 권한(USER, ADMIN, ...)
+								.roles("USER", "ADMIN")							// 사용자 권한(USER, ADMIN, ...)
 								.build();										// UserDetails 객체 생성.
 		
 		// 사용자 상세 정보
@@ -60,6 +57,7 @@ public class SecurityConfig {
 		
 		return new InMemoryUserDetailsManager(user1, user2, user3);
 	}
+	*/
 	
 	// Security Filter 설정 bean - 필수
 	// 로그인/로그아웃 설정
